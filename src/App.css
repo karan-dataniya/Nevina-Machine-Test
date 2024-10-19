@@ -1,38 +1,237 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Arial', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.calendar-container {
   display: flex;
   flex-direction: column;
+  width: 800px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+}
+
+.calendar-header span {
+  font-weight: bold;
+}
+
+.view-buttons {
+  display: flex;
+}
+
+.today-btn {
+  background-color: orange;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.view-btn {
+  padding: 5px 10px;
+  margin-left: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.view-btn.active {
+  background-color: #ffd700;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.time-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.time-slot {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.events-column {
+  position: relative;
+  border-left: 1px solid #ddd;
+}
+
+.event {
+  position: absolute;
+  left: 10px;
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+  background-color: rgb(200, 207, 209);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.event-title {
+  font-weight: bold;
+  margin-bottom: 5px; /* Ensures the title and status are separated */
+}
+
+.event-status {
+  font-size: 12px;
+  color: gray;
+}
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+.schedule-header .date {
+  font-size: 18px;
+  font-weight: bold;
+}
+.schedule-header .btn-group button {
+  margin-right: 5px;
+}
+.schedule-header .btn-schedule {
+  background-color: #ffcc00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.schedule-table th, .schedule-table td {
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  text-align: left;
+}
+.schedule-table th {
+  background-color: #f8f9fa;
+}
+.schedule-table .time-slot {
+  width: 60px;
+  text-align: center;
+}
+.schedule-table .event {
+  position: relative;
+  background-color: #f1f3f5;
+  border-left: 5px solid;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.schedule-table .event .status {
+  font-size: 12px;
+  color: #6c757d;
+}
+.schedule-table .event .checked-in {
+  border-color: #ff0000;
+}
+.schedule-table .event .to-be-played {
+  border-color: #007bff;
+}
+.schedule-table .event .office-chill {
+  border-color: #6f42c1;
+}
+.schedule-table .event .jacob-jones {
+  border-color: #20c997;
+}
+.schedule-table .event .kristin-watson {
+  border-color: #6f42c1;
+}
+.schedule-table .event .esther-track {
+  border-color: #007bff;
+}
+.schedule-table .event .chloe-mckinney {
+  border-color: #007bff;
+}
+.current-time {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ff0000;
+}
+.current-time .dot {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: #ff0000;
+  border-radius: 50%;
+}
+
+.mgnr{
+  margin-right: 10px;
+}
+
+.mgnl{
+  margin-left: 10px;
+}
+
+.dwm{
+  margin-left: 30px;
+}
+
+.mrgt{
+  margin-top: -90px;
+  color: #12BDB2;
+}
+
+.mrgt4{
+  color: #12BDB2;
+}
+
+.red{
+  color: black;
+}
+
+.mrgt1{
+  color: #8239BC;
+}
+
+.mrgt2{
+  color: #8239BC;
+  margin-left: 18px;
+}
+
+.mrgt3{
+  color: #54A0CA;
+}
+
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: #4A5568;
+}
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #4A5568;
+}
+
+.img-bg{
+  background-image: url('kesariya.jpg');
+  height: 50px;
+  width: 50px;
 }
